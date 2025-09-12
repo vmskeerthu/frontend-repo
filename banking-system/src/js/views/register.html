@@ -1,0 +1,21 @@
+<div class="oj-flex oj-sm-flex-items-center oj-sm-justify-content-center" style="height:100vh;">
+  <div class="oj-sm-8 oj-md-6 oj-panel oj-sm-padding-4">
+    <h2>Register</h2>
+    <oj-form-layout>
+      <oj-input-text id="name" label-hint="Full Name" value="{{name}}"></oj-input-text>
+      <oj-input-text id="email" label-hint="Email" value="{{email}}"></oj-input-text>
+      <oj-input-text id="password" label-hint="Password" value="{{passwordHash}}"></oj-input-text>
+      <oj-input-text id="address" label-hint="Address" value="{{address}}"></oj-input-text>
+      <oj-input-text id="phone" label-hint="Phone Number" value="{{phoneNumber}}"></oj-input-text>
+
+     <oj-select-one id="accountType" label-hint="Account Type" value="{{accountType}}">
+        <oj-option value="SAVINGS">SAVINGS</oj-option>
+        <oj-option value="CURRENT">CURRENT</oj-option>
+      </oj-select-one>
+
+      <oj-button on-oj-action="[[register]]">Register</oj-button>
+    </oj-form-layout>
+    <p>Already have an account? <a href="?ojr=login">Login</a></p>
+    <div data-bind="text:errorMessage" style="color:red;margin-top:10px;"></div>
+  </div>
+</div>

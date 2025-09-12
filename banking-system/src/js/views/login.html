@@ -1,0 +1,12 @@
+<div class="oj-flex oj-sm-flex-items-center oj-sm-justify-content-center" style="height:100vh;">
+  <div class="oj-sm-6 oj-md-4 oj-panel oj-sm-padding-4">
+    <h2>Login</h2>
+    <oj-form-layout>
+      <oj-input-text id="email" label-hint="Email" value="{{email}}"></oj-input-text>
+      <oj-input-text id="password" label-hint="Password" value="{{password}}"></oj-input-text>
+      <oj-button on-oj-action="[[login]]">Login</oj-button>
+    </oj-form-layout>
+    <p>Don’t have an account? <a href="?ojr=register">Register</a></p>
+    <div data-bind="text:errorMessage" style="color:red;margin-top:10px;"></div>
+  </div>
+</div>
