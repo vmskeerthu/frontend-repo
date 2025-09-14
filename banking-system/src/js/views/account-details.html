@@ -1,0 +1,111 @@
+<!-- Account Details Page -->
+<div class="account-details-page">
+  <!-- Page Header -->
+
+
+  <!-- Account Details Section -->
+  <div class="account-details-section">
+    <div class="account-details-header">
+      <div class="header-icon">🏦</div>
+      <h3 class="section-title">Account Information</h3>
+      <div class="header-subtitle">Complete account details and status</div>
+    </div>
+    
+    <div class="account-details-container">
+      <!-- Primary Account Info Card -->
+      <div class="account-info-card primary-card">
+        <div class="card-header">
+          <div class="account-icon">💳</div>
+          <div class="account-title">
+            <h4 data-bind="text: accountDetails().accountType"></h4>
+            <p class="account-subtitle">Account Details</p>
+          </div>
+        </div>
+        <div class="account-number-section">
+          <div class="number-label">Account Number</div>
+          <div class="account-number" data-bind="text: accountDetails().accountNumber"></div>
+        </div>
+      </div>
+
+      <!-- Balance Card -->
+      <div class="account-info-card balance-card">
+        <div class="card-header">
+          <div class="balance-icon">💰</div>
+          <div class="balance-title">
+            <h4>Current Balance</h4>
+            <p class="balance-subtitle">Available Funds</p>
+          </div>
+        </div>
+        <div class="balance-amount" data-bind="text: accountDetails().balance"></div>
+      </div>
+
+      <!-- Status Card -->
+      <div class="account-info-card status-card">
+        <div class="card-header">
+          <div class="status-icon">✅</div>
+          <div class="status-title">
+            <h4>Account Status</h4>
+            <p class="status-subtitle">Current Status</p>
+          </div>
+        </div>
+        <div class="status-badge" data-bind="text: accountDetails().status"></div>
+      </div>
+
+      <!-- Timeline Card -->
+      <div class="account-info-card timeline-card">
+        <div class="card-header">
+          <div class="timeline-icon">📅</div>
+          <div class="timeline-title">
+            <h4>Account Timeline</h4>
+            <p class="timeline-subtitle">Important Dates</p>
+          </div>
+        </div>
+        <div class="timeline-items">
+          <div class="timeline-item">
+            <div class="timeline-label">Account Created</div>
+            <div class="timeline-value" data-bind="text: accountDetails().createdDate"></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-label">Last Updated</div>
+            <div class="timeline-value" data-bind="text: accountDetails().lastUpdated"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Additional Account Information -->
+  <div class="additional-info-section">
+    <h3 class="section-title">Additional Information</h3>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-icon">🏛️</div>
+        <div class="info-content">
+          <h4>Bank Information</h4>
+          <p>ABCD Bank</p>
+          <p>Digital Banking Division</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">📞</div>
+        <div class="info-content">
+          <h4>Customer Support</h4>
+          <p>24/7 Helpline</p>
+          <p>1800-123-4567</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">🔒</div>
+        <div class="info-content">
+          <h4>Security</h4>
+          <p>256-bit SSL Encryption</p>
+          <p>Secure Banking</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+
+  </div>
+</div>

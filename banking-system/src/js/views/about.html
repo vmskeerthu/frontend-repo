@@ -1,11 +1,104 @@
-<!--
- Copyright (c) 2014, 2025, Oracle and/or its affiliates.
- Licensed under The Universal Permissive License (UPL), Version 1.0
- as shown at https://oss.oracle.com/licenses/upl/
- -->
-<div class="oj-hybrid-padding">
-  <h1>About Content Area</h1>
-  <div>
-      To change the content of this section, you will make edits to the about.html file located in the /js/views folder.
+<!-- Oracle Banking About Page -->
+<div class="about-container">
+  <!-- Hero Section -->
+  <div class="about-hero">
+    <div class="hero-content">
+      <h1 class="hero-title" data-bind="text: companyInfo.name"></h1>
+      <p class="hero-tagline" data-bind="text: companyInfo.tagline"></p>
+      <p class="hero-description" data-bind="text: companyInfo.description"></p>
+    </div>
+  </div>
+
+  <!-- Company Stats -->
+  <div class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number" data-bind="text: companyInfo.founded"></div>
+        <div class="stat-label">Founded</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-bind="text: companyInfo.employees"></div>
+        <div class="stat-label">Employees</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-bind="text: companyInfo.customers"></div>
+        <div class="stat-label">Customers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">Countries</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features Section -->
+  <div class="features-section">
+    <h2 class="section-title">Why Choose Oracle Banking?</h2>
+    <div class="features-grid">
+      <!-- ko foreach: features -->
+      <div class="feature-card">
+        <div class="feature-icon" data-bind="text: icon"></div>
+        <h3 class="feature-title" data-bind="text: title"></h3>
+        <p class="feature-description" data-bind="text: description"></p>
+      </div>
+      <!-- /ko -->
+    </div>
+  </div>
+
+  <!-- Awards Section -->
+  <div class="awards-section">
+    <h2 class="section-title">Awards & Certifications</h2>
+    <div class="awards-grid">
+      <!-- ko foreach: awards -->
+      <div class="award-item" data-bind="text: $data"></div>
+      <!-- /ko -->
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <div class="contact-section">
+    <h2 class="section-title">Get in Touch</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Contact Information</h3>
+        <div class="contact-item">
+          <span class="contact-label">Phone:</span>
+          <span class="contact-value" data-bind="text: contactInfo.phone"></span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Email:</span>
+          <span class="contact-value" data-bind="text: contactInfo.email"></span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Address:</span>
+          <span class="contact-value" data-bind="text: contactInfo.address"></span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Website:</span>
+          <span class="contact-value" data-bind="text: contactInfo.website"></span>
+        </div>
+      </div>
+      
+      <div class="social-section">
+        <h3>Follow Us</h3>
+        <div class="social-links">
+          <!-- ko foreach: socialLinks -->
+          <a href="#" class="social-link" data-bind="attr: { href: url }">
+            <span class="social-icon" data-bind="text: icon"></span>
+            <span class="social-name" data-bind="text: name"></span>
+          </a>
+          <!-- /ko -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Note -->
+  <div class="about-footer">
+    <p class="footer-note">
+      Oracle Banking is committed to providing secure, reliable, and innovative banking solutions. 
+      We are licensed and regulated by the Reserve Bank of India and maintain the highest standards 
+      of financial security and customer service.
+    </p>
   </div>
 </div>

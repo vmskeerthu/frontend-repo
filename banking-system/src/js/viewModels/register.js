@@ -47,6 +47,26 @@ window.appRouter.go('login');
         self.errorMessage("Error: " + err.message);
       });
     };
+
+    // Connected method for proper initialization
+    self.connected = function() {
+      console.log('Register page connected');
+      document.title = "Oracle Banking - Register";
+      // Add register-page class to body
+      document.body.classList.add('register-page');
+    };
+
+    // Disconnected method
+    self.disconnected = function() {
+      console.log('Register page disconnected');
+      // Remove register-page class from body
+      document.body.classList.remove('register-page');
+    };
+
+    // Transition completed method
+    self.transitionCompleted = function() {
+      console.log('Register page transition completed');
+    };
   }
   return RegisterViewModel;
 });

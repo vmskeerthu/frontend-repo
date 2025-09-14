@@ -1,12 +1,76 @@
-<div class="oj-flex oj-sm-flex-items-center oj-sm-justify-content-center" style="height:100vh;">
-  <div class="oj-sm-6 oj-md-4 oj-panel oj-sm-padding-4">
-    <h2>Login</h2>
-    <oj-form-layout>
-      <oj-input-text id="email" label-hint="Email" value="{{email}}"></oj-input-text>
-      <oj-input-text id="password" label-hint="Password" value="{{password}}"></oj-input-text>
-      <oj-button on-oj-action="[[login]]">Login</oj-button>
-    </oj-form-layout>
-    <p>Don’t have an account? <a href="?ojr=register">Register</a></p>
-    <div data-bind="text:errorMessage" style="color:red;margin-top:10px;"></div>
+<!-- Oracle Banking Login Page -->
+<div class="login-container">
+  <!-- Background Pattern -->
+  <div class="login-background">
+    <div class="login-pattern"></div>
+  </div>
+  
+  <!-- Main Login Card -->
+  <div class="login-card">
+    <!-- Oracle Banking Header -->
+    <div class="login-header">
+      <span class="banking-icon">🏦</span>
+      <h3 class="drawer-title">ABCD BANK</h3>
+
+    </div>
+
+    <!-- Login Form Section -->
+    <div class="login-form-section">
+      <h1 class="login-title">Login to NetBanking</h1>
+      
+      <!-- Customer ID Input -->
+      <div class="input-group">
+        <label class="input-label">Email ID</label>
+        <oj-input-text 
+          id="email" 
+          value="{{email}}"
+          placeholder="Enter your Email ID"
+          class="login-input">
+        </oj-input-text>
+
+      </div>
+
+      <!-- Password Input -->
+      <div class="input-group">
+        <label class="input-label">Password</label>
+        <oj-input-text 
+          id="password" 
+          value="{{password}}"
+          type="password"
+          placeholder="Enter your password"
+          class="login-input">
+        </oj-input-text>
+       </div>
+
+
+
+      <!-- Login Button -->
+      <oj-button 
+        on-oj-action="[[login]]" 
+        class="login-button"
+        chroming="callToAction">
+        LOGIN
+      </oj-button>
+
+      <!-- Error Message -->
+      <div data-bind="text:errorMessage" class="error-message"></div>
+
+      <!-- Welcome Message -->
+      <div class="welcome-message">
+        <div class="message-content">
+          <strong>Dear Customer,</strong><br>
+          Welcome to the new login page of Oracle Banking.<br>
+          Its lighter look and feel is designed to give you the best possible user experience. 
+          Please continue to login using your email ID and password.
+        </div>
+      </div>
+
+
+
+      <!-- Register Link -->
+      <div class="register-section">
+        <p>Don't have an account? <a href="?ojr=register" class="register-link">Register</a></p>
+      </div>
+    </div>
   </div>
 </div>

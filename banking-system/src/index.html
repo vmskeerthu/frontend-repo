@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>Oracle JET Starter Template - Web Nav Drawer</title>
+    <title>ABCD BANK - Digital Banking Solutions</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1">
     <link rel="icon" href="css/images/JET-Favicon-Red-32x32.png" type="image/x-icon" />
+
+    <!-- Professional Banking Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <!-- theme and fonts injectors -->
     <!-- injector:theme -->
@@ -25,9 +30,18 @@
 
       <!-- Side Drawer -->
       <oj-drawer-popup id="navDrawer" edge="start" opened="{{sideDrawerOn}}"
-                       modality="modeless" role="navigation"
+                       modality="modal" role="navigation"
                        class="oj-bg-neutral-170 oj-color-invert">
         <div class="demo-navlist-container">
+          <!-- Drawer Header with Close Button -->
+          <div class="drawer-header">
+            <span class="banking-icon">🏦</span>
+            <h3 class="drawer-title">ABCD BANK</h3>
+            <button class="drawer-close-btn" data-bind="click: closeDrawer" aria-label="Close navigation">
+              <span class="close-icon">×</span>
+            </button>
+          </div>
+          
           <oj-navigation-list id="navDrawerList"  
                               drill-mode="none"
                               data="[[navDataProvider]]"
@@ -35,10 +49,8 @@
                               on-selection-changed="[[onNavSelectionChanged]]">
             <template slot="itemTemplate" data-oj-as="item">
               <li id="[[item.data.id]]">
-                <!-- <a href="#"> -->
-                  <span class="oj-navigationlist-item-icon [[item.data.icons]]"></span>
-                  <oj-bind-text value="[[item.data.name]]"></oj-bind-text>
-                <!-- </a> -->
+                <span class="oj-navigationlist-item-icon [[item.data.icons]]"></span>
+                <oj-bind-text value="[[item.data.name]]"></oj-bind-text>
               </li>
             </template>
           </oj-navigation-list>
@@ -60,7 +72,7 @@
             </div>
 
             <div class="oj-flex-bar-middle oj-sm-align-items-baseline">
-              <img class="oj-icon demo-oracle-icon" title="Oracle Logo" alt="Oracle Logo"></img>
+              <span class="banking-icon">🏦</span>
               <h1 class="oj-sm-only-hide oj-web-applayout-header-title" title="Application Name">
                 <oj-bind-text value="[[appName]]"></oj-bind-text>
               </h1>
@@ -72,12 +84,7 @@
                   <span><oj-bind-text value="[[userLogin]]"></oj-bind-text></span>
                   <span slot="endIcon"
                         class="oj-icon demo-appheader-avatar"></span>
-                  <oj-menu id="menu1" slot="menu">
-                    <oj-option id="pref" value="pref">Preferences</oj-option>
-                    <oj-option id="help" value="help">Help</oj-option>
-                    <oj-option id="about" value="about">About</oj-option>
-                    <oj-option id="out" value="out">Sign Out</oj-option>
-                  </oj-menu>
+              
                 </oj-menu-button>
               </oj-toolbar>
             </div>
@@ -105,7 +112,7 @@
             </ul>
           </div>
           <div class="oj-web-applayout-footer-item oj-web-applayout-max-width oj-text-color-secondary oj-typography-body-sm">
-            Copyright © 2014, 2025 Oracle and/or its affiliates All rights reserved.
+            Copyright © 2025 ABCD Bank. All rights reserved.
           </div>
         </footer>
       </div>

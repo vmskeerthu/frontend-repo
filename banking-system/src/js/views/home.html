@@ -1,11 +1,63 @@
-<!--
- Copyright (c) 2014, 2025, Oracle and/or its affiliates.
- Licensed under The Universal Permissive License (UPL), Version 1.0
- as shown at https://oss.oracle.com/licenses/upl/
- -->
-<div class="oj-hybrid-padding">
-  <h1>Dashboard Content Area</h1>
-  <div>
-      To change the content of this section, you will make edits to the dashboard.html file located in the /js/views folder.
+<!-- Oracle Banking Home Dashboard -->
+<div class="home-container">
+  <!-- Special Offers Banner -->
+
+
+  <!-- Quick Navigation Tabs -->
+  <div class="nav-tabs">
+    <div class="nav-tab active" data-tab="accounts">
+      <div class="tab-icon">₹</div>
+      <div class="tab-content">
+        <div class="tab-title">Accounts</div>
+        <div class="tab-subtitle">Savings, Current etc</div>
+      </div>
+     
+    </div>
   </div>
+
+  <!-- Show Balance Toggle -->
+  <div class="balance-toggle">
+    <span class="toggle-label">Show Balance</span>
+    <oj-switch id="showBalance" value="{{showBalance}}" class="balance-switch"></oj-switch>
+  </div>
+
+  <!-- Account Cards Section -->
+  <div class="account-cards">
+    <!-- Savings Account Card -->
+    <div class="account-card savings-card">
+      <div class="card-header">
+        <div class="card-icon">💰</div>
+        <div class="card-arrow">→</div>
+      </div>
+      <div class="card-title">Savings Accounts</div>
+      <div class="card-balance" data-bind="text: showBalance() ? accountBalance() : 'XXXXXXXX'"></div>
+      <oj-button class="card-button" chroming="outlined" on-click="[[getAccountDetails]]">Get Account Details</oj-button>
+    </div>
+
+    <!-- Loan Offer Card -->
+
+  </div>
+
+
+
+  <!-- Quick Actions Grid -->
+  <div class="quick-actions">
+    <h3 class="section-title">Quick Actions</h3>
+    <div class="actions-grid">
+      <div class="action-item" data-action="transfer">
+        <div class="action-icon">💸</div>
+        <span class="action-text">Transfer Money</span>
+      </div>
+      <div class="action-item" data-action="deposit">
+        <div class="action-icon">💰</div>
+        <span class="action-text">Deposit</span>
+      </div>
+      <div class="action-item" data-action="withdrawal">
+        <div class="action-icon">💳</div>
+        <span class="action-text">Withdraw</span>
+      </div>
+
+  </div>
+
+
 </div>

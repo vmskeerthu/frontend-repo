@@ -1,54 +1,93 @@
-/**
- * @license
- * Copyright (c) 2014, 2025, Oracle and/or its affiliates.
- * Licensed under The Universal Permissive License (UPL), Version 1.0
- * as shown at https://oss.oracle.com/licenses/upl/
- * @ignore
- */
-/*
- * Your about ViewModel code goes here
- */
-define(['../accUtils'],
- function(accUtils) {
-    function AboutViewModel() {
-      // Below are a set of the ViewModel methods invoked by the oj-module component.
-      // Please reference the oj-module jsDoc for additional information.
+define(['knockout'], function(ko) {
+  function AboutViewModel() {
+    let self = this;
 
-      /**
-       * Optional ViewModel method invoked after the View is inserted into the
-       * document DOM.  The application can put logic that requires the DOM being
-       * attached here.
-       * This method might be called multiple times - after the View is created
-       * and inserted into the DOM and after the View is reconnected
-       * after being disconnected.
-       */
-      this.connected = () => {
-        accUtils.announce('About page loaded.', 'assertive');
-        document.title = "About";
-        // Implement further logic if needed
-      };
+    // Page title
+    self.pageTitle = ko.observable('About Oracle Banking');
 
-      /**
-       * Optional ViewModel method invoked after the View is disconnected from the DOM.
-       */
-      this.disconnected = () => {
-        // Implement if needed
-      };
+    // Company information
+    self.companyInfo = {
+      name: 'Oracle Banking',
+      tagline: 'Digital Banking Solutions for the Modern World',
+      description: 'Oracle Banking provides comprehensive digital banking solutions that empower financial institutions to deliver exceptional customer experiences while maintaining the highest standards of security and reliability.',
+      founded: '2020',
+      headquarters: 'Bangalore, India',
+      employees: '10,000+',
+      customers: '50 Million+'
+    };
 
-      /**
-       * Optional ViewModel method invoked after transition to the new View is complete.
-       * That includes any possible animation between the old and the new View.
-       */
-      this.transitionCompleted = () => {
-        // Implement if needed
-      };
-    }
+    // Features
+    self.features = [
+      {
+        title: 'Secure Banking',
+        description: 'Bank-grade security with end-to-end encryption and multi-factor authentication.',
+        icon: '🔒'
+      },
+      {
+        title: '24/7 Support',
+        description: 'Round-the-clock customer support to assist you with all your banking needs.',
+        icon: '🕐'
+      },
+      {
+        title: 'Mobile First',
+        description: 'Seamless mobile banking experience across all devices and platforms.',
+        icon: '📱'
+      },
+      {
+        title: 'Real-time Processing',
+        description: 'Instant transaction processing with real-time balance updates.',
+        icon: '⚡'
+      },
+      {
+        title: 'Global Reach',
+        description: 'International banking services with competitive exchange rates.',
+        icon: '🌍'
+      },
+      {
+        title: 'AI-Powered',
+        description: 'Smart financial insights and personalized recommendations.',
+        icon: '🤖'
+      }
+    ];
 
-    /*
-     * Returns an instance of the ViewModel providing one instance of the ViewModel. If needed,
-     * return a constructor for the ViewModel so that the ViewModel is constructed
-     * each time the view is displayed.
-     */
-    return AboutViewModel;
+    // Contact information
+    self.contactInfo = {
+      phone: '+91 80 1234 5678',
+      email: 'support@oraclebanking.com',
+      address: 'Oracle Tower, Brigade Road, Bangalore - 560001, India',
+      website: 'www.oraclebanking.com'
+    };
+
+    // Social media links
+    self.socialLinks = [
+      { name: 'Facebook', url: '#', icon: '📘' },
+      { name: 'Twitter', url: '#', icon: '🐦' },
+      { name: 'LinkedIn', url: '#', icon: '💼' },
+      { name: 'Instagram', url: '#', icon: '📷' }
+    ];
+
+    // Awards and certifications
+    self.awards = [
+      'Best Digital Bank 2024',
+      'ISO 27001 Certified',
+      'PCI DSS Compliant',
+      'RBI Licensed Bank'
+    ];
+
+    // Lifecycle methods
+    self.connected = function() {
+      console.log('About page connected');
+      document.title = "Oracle Banking - About Us";
+    };
+
+    self.disconnected = function() {
+      console.log('About page disconnected');
+    };
+
+    self.transitionCompleted = function() {
+      console.log('About page transition completed');
+    };
   }
-);
+
+  return AboutViewModel;
+});

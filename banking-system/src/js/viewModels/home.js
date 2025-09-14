@@ -8,11 +8,79 @@
 /*
  * Your dashboard ViewModel code goes here
  */
-define(['../accUtils'],
- function(accUtils) {
+define(['../accUtils', 'knockout', 'ojs/ojswitch'],
+ function(accUtils, ko) {
     function DashboardViewModel() {
-      // Below are a set of the ViewModel methods invoked by the oj-module component.
-      // Please reference the oj-module jsDoc for additional information.
+      let self = this;
+      
+      // Observable for show balance toggle
+      self.showBalance = ko.observable(false);
+      
+      // Subscribe to showBalance changes to refresh balance when toggled on
+      self.showBalance.subscribe(function(newValue) {
+        if (newValue && self.currentAccountNumber()) {
+          self.fetchAccountBalance(self.currentAccountNumber());
+        }
+      });
+      
+      // Observable for account balance
+      self.accountBalance = ko.observable('Loading...');
+      self.currentAccountNumber = ko.observable('');
+      
+      // Navigation handler for quick actions
+      self.navigateToAction = (action) => {
+        if (window.appRouter) {
+          window.appRouter.go({ path: action });
+        }
+      };
+
+      // Fetch account balance
+      self.fetchAccountBalance = function(accountNumber) {
+        if (!accountNumber) {
+          self.accountBalance('No account selected');
+          return;
+        }
+
+        const token = localStorage.getItem('token');
+        if (!token) {
+          self.accountBalance('Please login first');
+          return;
+        }
+
+        fetch(`http://localhost:8080/api/accounts/${accountNumber}/balance`, {
+          method: 'GET',
+          headers: {
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Failed to fetch balance');
+          }
+          return response.json();
+        })
+        .then(data => {
+          // Format the balance with Indian number format
+          const balance = data.balance || 0;
+          const formattedBalance = new Intl.NumberFormat('en-IN').format(balance);
+          self.accountBalance(`₹${formattedBalance}`);
+        })
+        .catch(error => {
+          console.error('Error fetching balance:', error);
+          self.accountBalance('Error loading balance');
+        });
+      };
+
+      // Navigate to account details page
+      self.getAccountDetails = function() {
+        console.log('Navigating to account details page...');
+        if (window.appRouter) {
+          window.appRouter.go({ path: 'account-details' });
+        } else {
+          console.error('Router not available');
+        }
+      };
 
       /**
        * Optional ViewModel method invoked after the View is inserted into the
@@ -23,9 +91,22 @@ define(['../accUtils'],
        * after being disconnected.
        */
       this.connected = () => {
-        accUtils.announce('Dashboard page loaded.', 'assertive');
-        document.title = "Dashboard";
-        // Implement further logic if needed
+        accUtils.announce('Home dashboard loaded.', 'assertive');
+        document.title = "Oracle Banking - Home";
+        
+        // Get current user's account number and fetch balance
+        const userAccountNumber = localStorage.getItem('userAccountNumber') || '0f076df3ae9e479';
+        self.currentAccountNumber(userAccountNumber);
+        self.fetchAccountBalance(userAccountNumber);
+        
+        // Add click handlers for quick actions
+        const actionItems = document.querySelectorAll('.action-item');
+        actionItems.forEach(item => {
+          item.addEventListener('click', () => {
+            const action = item.getAttribute('data-action');
+            self.navigateToAction(action);
+          });
+        });
       };
 
       /**
